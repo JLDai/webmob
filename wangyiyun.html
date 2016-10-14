@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="UTF-8">
+		<title>网易云音乐</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				font-size: 0.4375rem;
+				font-family: Microsoft Yahei, Arial, Helvetica, sans-serif;
+			}
+			#box{
+				width: 100%;
+				height: 17.75rem;
+				background: url(img/bg.png) center center no-repeat;
+				background-size: auto 100% ;
+				position: relative;
+				opacity: 1;
+			}
+			#content{
+				width: 100%;
+				height: 15.71875rem;
+				padding-top: 2rem;
+			}
+			#show{
+				width: 100%;
+				height: 12.1875rem;
+			}
+			#cnttop,.turn{
+				width: 7.75rem;
+				height: 7.75rem;
+				margin: 0 auto;
+			}
+			.turn{
+				background: url(./img/disc.png) no-repeat; 
+   				background-size: 7.75rem auto;
+   				position: absolute;
+   				z-index: 9;
+   				transform-origin:50% 50%;
+   				animation: turn 12s linear paused infinite;
+			}
+			@keyframes turn{
+				from{
+					transform: rotate(0deg);
+				}
+				to{
+					transform: rotate(360deg);
+				}
+			}
+			.singimg,.singimg img{
+				width: 4.825rem;
+				height: 4.825rem;
+				border-radius: 50%;
+			}
+			.singimg{
+				position: absolute;
+				top: 18.6%;
+				left: 18.6%;
+			}
+			.needle{
+				width: 2.625rem;
+				height: 3.8125rem;
+				background: url(img/needle.png) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				left: 47%;
+				top: 0;
+				z-index: 99;
+				transform-origin: 1% 0;
+				transform: rotate(-15deg);
+			}
+			#cntbottom{
+				width: 7.8125rem;
+				height: 3.65625rem;
+				margin: 0 auto;
+				text-align: center;
+				font-size: 0.4375rem;
+				color: #999;
+				font-family: Microsoft Yahei, Arial, Helvetica, sans-serif;
+				position: relative;
+				overflow: hidden;
+			}
+			.lrccover{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			h2 b{
+				color: white;
+			}
+			h2{
+				font-weight: normal;
+				height: 0.46875rem;
+				line-height:  0.46875rem;
+				font-size: 0.46875rem;
+				padding: 0.81875rem 0 0.4rem 0;
+				text-align: center;
+			}
+			.lrccover p{
+				height: 0.59375rem;
+				padding-bottom: 0.15625rem;
+			}
+			.cd{
+				height: 100%;
+				position: relative;
+			}
+			.paused{
+				width: 1.5625rem;
+				height: 1.5625rem;
+				background: url(img/play_btn.png) no-repeat;
+				background-size:1.5625rem 1.5625rem;
+				position: absolute;
+				z-index: 999;
+				left: 40%;
+				top: 40%;
+				display: block;
+			}
+			#footer{
+				width: 10rem;
+				padding-top: 1rem;
+			}
+			.progress{
+				width: 100%;
+				height: 1rem;
+			}
+			.control{
+				width: 100%;
+				height: 1rem;
+				margin-top: 0.5rem;
+			}
+			.suiji,.before,.play,.next,.muted{
+				width: 10%;
+				margin: 0 0.5rem;
+				height: 100%;
+				float: left;
+				cursor: pointer;
+			}
+			.play{
+				width: 1rem;
+				height: 1rem;
+				background: url(img/musicplay.png)  no-repeat;
+				background-size:1rem 1rem;
+			}
+			.playtime,.staytime{
+				display: block;
+				float: left;
+				width: 1rem;
+				margin: 0 0.5rem;
+				height: 1rem;
+				line-height: 1rem;
+			}
+			.progressdiv{
+				width: 60%;
+				float: left;
+				height: 1rem;
+				position: relative;
+			}
+			.round{
+				width: 0.75rem;
+				height: 0.75rem;
+				border-radius:50%;
+				background: white;
+				position: absolute;
+				top: 0.2rem;
+				left: 0;
+			}
+			.line{
+				width: 100%;
+				height: 0.2rem;
+				background: #666;
+				margin-top: 0.5rem;
+			}
+			.coverline{
+				width: 0;
+				height: 100%;
+				background: red;
+			}
+			.before{
+				background: url(img/before.png) no-repeat;
+				background-size:1rem 1rem ;
+			}
+			.next{
+				background: url(img/next.png) no-repeat;
+				background-size:1rem 1rem ;
+			}
+			.muted{
+				background: url(img/musicvedio.png) no-repeat;
+				background-size:1rem 1rem ;
+			}
+			.suiji{
+				background: url(img/vedio.png) no-repeat;
+				background-size:1rem 1rem ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="needle"></div>
+			<div id="content">
+				<div id="show">
+					<div id="cnttop">
+					<div class="cd">
+						<div class="turn">
+							<div class="singimg">
+								<img src="img/singer.png"/>
+							</div>
+						</div>
+						<div class="paused"></div>
+					</div>
+				</div>
+				<h2><b>十年 </b><span> 陈奕迅</span></h2>
+				<div id="cntbottom">
+					<div class="lrccover">
+					<p>作曲：陈小霞</p>
+					<p>作词：林夕</p>
+					<p>如果那两个字没有颤抖</p>
+					<p>我不会发现 我难受</p>
+					<p>怎么说出口 也不过是分手</p>
+					<p>如果对于明天没有要求</p>
+					<p>牵牵手就像旅游</p>
+					<p>成千上万个门口 总有一个人要先走</p>
+					<p>怀抱既然不能逗留</p>
+					<p>何不在离开的时候</p>
+					<p>一边享受 一边泪流</p>
+					<p>十年之前</p>
+					<p>我不认识你 你不属于我</p>
+					<p>我们还是一样 陪在一个陌生人左右</p>
+					<p>走过渐渐熟悉的街头</p>
+					<p>十年之后</p>
+					<p>我们是朋友 还可以问候</p>
+					<p>只是那种温柔 再也找不到拥抱的理由</p>
+					<p>情人最后难免沦为朋友</p>
+					<p >怀抱既然不能逗留</p>
+					<p>何不在离开的时候</p>
+					<p>一边享受 一边泪流</p>
+					<p>十年之前</p>
+					<p>我不认识你 你不属于我</p>
+					<p>我们还是一样 陪在一个陌生人左右</p>
+					<p>走过渐渐熟悉的街头</p>
+					<p>十年之后</p>
+					<p>我们是朋友 还可以问候</p>
+					<p>只是那种温柔 再也找不到拥抱的理由</p>
+					<p>情人最后难免沦为朋友</p>
+					<p>直到和你做了多年朋友</p>
+					<p>才明白我的眼泪</p>
+					<p>不是为你而流 也为别人而流</p>
+					</div>
+				</div>
+				</div>
+				<div id="footer">
+				<audio id="audio" src="source/薛之谦-演员.mp3"></audio>
+				<div class="progress">
+					<span class="playtime">00:00</span>
+					<div class="progressdiv">
+						<div class="round"></div>
+						<div class="line">
+							<div class="coverline"></div>
+						</div>
+					</div>
+					<span class="staytime">03:32</span>
+				</div>
+				<div class="control">
+					<div class="suiji"></div>
+					<div class="before"></div>
+					<div class="play" name = "paused"></div>
+					<div class="next"></div>
+					<div class="muted" name="notmuted"></div>
+				</div>
+			</div>
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="js/flexible.js"></script>
+		<script type="text/javascript">
+			var play = document.querySelector(".play");
+			var paused = document.querySelector(".paused");
+			var audio = document.querySelector("#audio");
+			var turn = document.querySelector(".turn");
+			var needle = document.querySelector(".needle");
+			var playtime = document.querySelector(".playtime");
+			var staytime = document.querySelector(".staytime");
+			var round = document.querySelector(".round");
+			var  timer;
+			var coverline = document.querySelector(".coverline");
+			var lrccover = document.querySelector(".lrccover");
+			var muted = document.querySelector(".muted");
+			function timetoString(data){
+				var time = parseInt(data);
+				var min = parseInt(time/60);
+				var second = time%60 > 9 ? time%60 : "0" + time%60;
+				return min + ":" + second;
+			}
+			function playFn (){
+				if(play.getAttribute("name") == "paused"){
+					audio.play();
+					play.style.background = "url(img/musicpaused.png)  no-repeat"
+					turn.style.animation = "turn 12s linear infinite";
+					needle.style.transform = "rotate(0deg)";
+					paused.style.display = "none";
+					play.setAttribute("name","play");
+					timer = setInterval(function(){
+						playtime.innerHTML = timetoString(audio.currentTime);
+						staytime.innerHTML = timetoString((audio.duration-audio.currentTime));
+						round.style.left = (audio.currentTime/audio.duration)*100 + "%" ;
+						coverline.style.width = (audio.currentTime/audio.duration)*100 + "%" ;
+						lrccover.style.top = -(audio.currentTime/audio.duration)*100  + "%";
+						if(audio.duration == audio.currentTime){
+							clearInterval(timer);
+						}
+					},1000);
+				}else{
+					audio.pause();
+					clearInterval(timer);
+					play.style.background = "url(img/musicplay.png)  no-repeat";
+					turn.style.animation = "turn 12s linear paused infinite";
+					needle.style.transform = "rotate(-15deg)";
+					paused.style.display = "block";
+					play.setAttribute("name","paused");
+				}
+			}
+			play.addEventListener("click",playFn);
+			paused.addEventListener("click",playFn);
+			function mutedFn(){
+				if(this.getAttribute("name")=="muted"){
+					audio.muted = false;
+					this.style.background = "url(img/musicvedio.png) no-repeat";
+					this.setAttribute("name","notmuted");
+				}else{
+					audio.muted = true;
+					this.style.background = "url(img/musicmute.png) no-repeat";
+					this.setAttribute("name","muted");
+				}
+			}
+			muted.addEventListener("click",mutedFn);
+		</script>
+	</body>
+</html>
